@@ -1,4 +1,5 @@
 import Paddle from './utils/paddle';
+import InputHandler from './utils/input';
 
 export const app = () => {
   const canvas = document.getElementById('gameScreen');
@@ -11,6 +12,8 @@ export const app = () => {
   const paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
 
   let lastTime = 0;
+
+  new InputHandler(paddle);
 
   function gameLoop(timestamp) {
     const deltaTime = timestamp - lastTime;

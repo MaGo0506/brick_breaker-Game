@@ -13,6 +13,7 @@
   },
   "rules": {
     "linebreak-style": ["error", "windows"],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "default-case": ["error", { "commentPattern": "^skip\\sdefault" }]
   }
 }
