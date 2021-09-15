@@ -10,7 +10,7 @@ export const app = () => {
   const GAME_WIDTH = 800;
   const GAME_HEIGHT = 500;
 
-  const ball = new Ball();
+  const ball = new Ball(GAME_WIDTH, GAME_HEIGHT);
 
   const paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
 
@@ -27,9 +27,10 @@ export const app = () => {
     paddle.draw(ctx);
 
     ball.draw(ctx);
+    ball.update(deltaTime);
 
     requestAnimationFrame(gameLoop);
   }
 
-  gameLoop();
+  requestAnimationFrame(gameLoop);
 };
