@@ -13,5 +13,24 @@ export default class InputHandler {
           // skip default
       }
     });
+
+    document.addEventListener('keyup', (e) => {
+      switch (e.keyCode) {
+        case 37:
+         if (paddle.speed < 0) {
+            paddle.stop();
+         }
+          
+          break;
+
+        case 39:
+            if (paddle.speed > 0) {
+                paddle.stop();
+             }
+          break;
+
+          // skip default
+      }
+    });
   }
 }
