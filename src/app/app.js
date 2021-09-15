@@ -1,11 +1,16 @@
-const canvas = document.getElementById('gameScreen');
+import Paddle from './utils/paddle'; 
 
-const ctx = canvas.getContext('2d');
+export const app = () => {
+  const canvas = document.getElementById('gameScreen');
 
-ctx.clearRect(0, 0, 800, 500);
+  const ctx = canvas.getContext('2d');
 
-ctx.fillStyle = '#0ff';
-ctx.fillRect(10, 10, 100, 100);
+  const GAME_WIDTH = 800;
+  const GAME_HEIGHT = 500;
 
-ctx.fillStyle = '#00f';
-ctx.fillRect(200, 200, 30, 30);
+  ctx.clearRect(0, 0, 800, 500);
+
+  const paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
+
+  paddle.draw(ctx);
+};
