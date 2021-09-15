@@ -1,6 +1,4 @@
-import Paddle from './utils/paddle';
-import InputHandler from './utils/input';
-import Ball from './utils/ball';
+import Game from './utils/game';
 
 export const app = () => {
   const canvas = document.getElementById('gameScreen');
@@ -10,24 +8,19 @@ export const app = () => {
   const GAME_WIDTH = 800;
   const GAME_HEIGHT = 500;
 
-  const ball = new Ball(GAME_WIDTH, GAME_HEIGHT);
-
-  const paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
-
   let lastTime = 0;
 
-  new InputHandler(paddle);
+  const game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game.start();
 
   function gameLoop(timestamp) {
     const deltaTime = timestamp - lastTime;
     lastTime = timestamp;
 
     ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    paddle.update(deltaTime);
-    paddle.draw(ctx);
 
-    ball.draw(ctx);
-    ball.update(deltaTime);
+    game.update(deltaTime);
+    game.draw(ctx);
 
     requestAnimationFrame(gameLoop);
   }
