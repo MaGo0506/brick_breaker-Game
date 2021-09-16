@@ -1,7 +1,8 @@
 import Paddle from './paddle';
 import InputHandler from './input';
 import Ball from './ball';
-import Brick from './brick';
+
+import { buildLevel, level1 } from './levels';
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -13,10 +14,7 @@ export default class Game {
     this.ball = new Ball(this);
     this.paddle = new Paddle(this);
 
-    let bricks = [];
-    for (let index = 0; index < 10; index++) {
-        bricks.push(new Brick(this, { x: index * 52, y: 30 }))
-    }
+    const bricks = buildLevel(this, level1);
 
     this.gameObjects = [
       this.ball,
@@ -31,6 +29,8 @@ export default class Game {
     this.gameObjects.forEach((object) => {
       object.update(deltaTime);
     });
+
+    this.gameObjects = this.gameObjects.filter((object) => !object.markedForDeletion);
   }
 
   draw(ctx) {
