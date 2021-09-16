@@ -11,7 +11,6 @@ export const app = () => {
   let lastTime = 0;
 
   const game = new Game(GAME_WIDTH, GAME_HEIGHT);
-  game.start();
 
   function gameLoop(timestamp) {
     const deltaTime = timestamp - lastTime;
